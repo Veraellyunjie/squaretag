@@ -136,11 +136,12 @@ sub file_iterator {
                     unshift @files,
                       sort map { catfile( $file, $_ ) } @new_files;
                 }
-                next FILE;
+#               next FILE;  # don't skip return $file when -d $file
             }
 
             # TODO handle symlink loops
-            return $file;
+            return $file
+              unless $file eq '.';  # exempt containing dir
         }
         return;
     };
@@ -174,6 +175,7 @@ sub print_tag_list {
 
 sub rename_files {
     my ( $options, $ops ) = @_;
+    @$ops = reverse @$ops;  # allow for renaming directories
     for my $op (@$ops) {
         my ( $old, $new ) = @$op;
         next if $old eq $new;
