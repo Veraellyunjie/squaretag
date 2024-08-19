@@ -63,7 +63,10 @@ sub run {
               [ \&is_tag_file, sub { check_tags( shift, "$_[0],$_[1]" ) } ],
         },
         clear => {
-            cmd      => sub { rename_files( shift, clear(@_) ) },
+            cmd => sub {
+                my $options = shift;
+                rename_files( $options, clear( $options, @_) );
+            },
             minargs  => 0,
             opt_spec => \@rename_opts,
         },
