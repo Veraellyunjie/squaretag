@@ -54,7 +54,7 @@ is capture( 'remove', '-v', 'foo', 'file[bar,foo].txt' ), <<EOF;
 file[bar,foo].txt -> file[bar].txt
 EOF
 
-is capture(qw(mv -v bar foo file[bar].txt)), <<EOF;
+is capture(qw(rename -v bar foo file[bar].txt)), <<EOF;
 file[bar].txt -> file[foo].txt
 EOF
 
