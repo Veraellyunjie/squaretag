@@ -491,7 +491,6 @@ squaretag - tag files by using filenames
   squaretag [-s SEP] [-r] rename [-v] [-n] [-f] OLD_TAG NEW_TAG FILES...
   squaretag [-s SEP] [-r] list FILES...
   squaretag [-s SEP] [-r] search [-I REGEX] SEARCH FILES...
-  squaretag          [-r] untagged FILES...
 
 =head1 DESCRIPTION
 
@@ -503,7 +502,7 @@ at the end of the filename or just before the last dot.
 
 Suppose the current directory contains the following files:
 
-  $ squaretag untagged *
+  $ squaretag search '!tagged()' *
   picture01.jpg
   picture02
 
@@ -535,7 +534,7 @@ And what would tags be good for if you couldn't search for them
 
 And if you have enough, you can simple clear all tags
 
-  $ squaretag clear *
+  $ squaretag clear -v *
   picture01[family].jpg -> picture01.jpg
   picture02[family] -> picture02
 
@@ -610,10 +609,6 @@ Rename OLD_TAG in NEW_TAG in all FILES.
 
 List and count all tags for FILES. The tags are sorted in descending
 order of frequency.
-
-=item untagged FILES...
-
-List all FILES without a tag.
 
 =back
 
