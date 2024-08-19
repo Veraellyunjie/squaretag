@@ -80,6 +80,7 @@ sub run {
             opt_spec => ['implicit|I=s'],
             minargs  => 0
         },
+        ## Deprecated
         untagged => {
             cmd     => sub { shift; print $_, "\n" for @{ find_untagged(@_) } },
             minargs => 0
