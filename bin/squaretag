@@ -51,7 +51,6 @@ sub run {
             minargs  => 1,
             opt_spec => \@rename_opts,
             check    => [ \&is_tag_file, \&check_tags ],
-            alias    => [ 'rm', 'delete', 'del' ],
         },
         rename => {
             cmd => sub {
@@ -62,7 +61,6 @@ sub run {
             opt_spec => \@rename_opts,
             check    =>
               [ \&is_tag_file, sub { check_tags( shift, "$_[0],$_[1]" ) } ],
-            alias => ['mv'],
         },
         clear => {
             cmd      => sub { rename_files( shift, clear(@_) ) },
@@ -91,16 +89,6 @@ sub run {
             minargs => 0
         },
     );
-
-    for my $mode ( values %modes ) {
-        if ( my $aliases = $mode->{alias} ) {
-            for my $alias (@$aliases) {
-                if ( !exists $modes{$alias} ) {
-                    $modes{$alias} = $mode;
-                }
-            }
-        }
-    }
 
     if ( $mode && $modes{$mode} ) {
         my $cmd     = $modes{$mode}->{cmd};
