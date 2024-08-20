@@ -490,6 +490,11 @@ Squaretag helps you to organize your files by tagging them. The tags
 are saved in the filename by adding all tags in square brackets either
 at the end of the filename or just before the last dot.
 
+=head1 MAINTENANCE MODE
+
+This project is in maintenance mode. That means there will be no more
+active feature development.
+
 =head1 EXAMPLES
 
 Suppose the current directory contains the following files:
